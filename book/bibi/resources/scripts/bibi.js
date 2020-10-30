@@ -1627,6 +1627,7 @@
             (n.push(a.value), !t || n.length !== t);
             i = !0
           );
+          
         } catch (e) {
           (r = !0), (o = e);
         } finally {
@@ -11099,4 +11100,128 @@
       });
   },
 });
+//wait for page
+setTimeout(() => {
+  //get all iframe
+  let iframes = document.querySelectorAll('iframe');
+  //create new btn
+  const parent = document.querySelector('#bibi-menu-r')
+  const btn = document.createElement('ul')
+  btn.classList.add('bibi-buttongroup')
+  btn.innerHTML = "<li class='bibi-buttonbox bibi-buttonbox-toggle' style='background-color: khaki;'><span class='bibi-button bibi-button-toggle default' title='Configure Setting' style='background-color: khaki;'><span class='bibi-button-iconbox' style='background-color: khaki;'><span class='bibi-icon bibi-icon-config' style='background-color: khaki;'></span></span><span class='bibi-button-label' style='background-color: khaki;'>Configure Setting</span></span></li>";
+  parent.appendChild(btn)
+ 
+ 
 
+ // loop through all ifram
+ 
+  for (let i = 0; i < iframes.length; i++) {
+    //get elements from iframe
+   let pes = iframes[i].contentWindow.document.querySelectorAll('p');
+   let body = iframes[i].contentWindow.document.querySelectorAll('div');
+   let all = document.querySelectorAll('*')
+  
+
+   // change theme by click btn
+   btn.addEventListener('click',(e) => {
+     e.preventDefault()
+    document.body.style.filter = "grayscale(0%)";
+    
+    for (let i = 0; i < all.length; i++) {
+     all[i].style.backgroundColor = '#121212';
+ 
+     
+   }
+   for (let i = 0; i < body.length; i++) {
+     body[i].style.color = 'white';
+     body[i].style.borderColor = 'gray';
+     body[i].style.direction = 'rtl';
+   }
+ 
+ 
+ 
+ 
+ 
+ 
+   })
+   for (let i = 0; i < all.length; i++) {
+     all[i].style.backgroundColor = 'khaki';
+ 
+     
+   }
+
+   // rtl after change font
+   let radios = document.querySelectorAll('.bibi-buttonbox-radio');
+   for (let i = 0; i < radios.length; i++) {
+    
+    radios[i].addEventListener('click',() => {
+      setTimeout(() => {
+        for (let i = 0; i < body.length; i++) {
+       body[i].style.direction = 'rtl';
+       
+     }
+      },1000)
+    })
+     
+     
+   }
+
+   // rtl after change zoom
+   
+
+    
+    window.addEventListener('resize', function() {
+      
+        for (let i = 0; i < pes.length; i++) {
+          pes[i].style.direction = 'rtl';
+     }
+      
+
+    })
+     
+     
+   
+
+
+   //deafult   rtl color  lineHight
+   for (let i = 0; i < body.length; i++) {
+     body[i].style.direction = 'rtl';
+     body[i].style.color = 'brown';
+     body[i].style.fontFamily = 'system-ui'
+     
+   }  
+   for (let i = 0; i < pes.length; i++) {
+   
+     pes[i].style.lineHeight  = '3';
+     //pes[i].style.fontSize  = '100px';
+ 
+ 
+     
+   }
+  }
+ 
+  
+  
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ },2000)
+
+
+
+
+
+
+
+
+
+
+
+ 
